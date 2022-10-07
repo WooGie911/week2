@@ -1,25 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React from "react";
+import { useSelector } from "react-redux"; // import 해주세요.
+
+const App = () => {
+  const counterStore = useSelector((state) => state); // 추가해주세요.
+  console.log(counterStore); // 스토어를 조회해볼까요?
+
+  return <div></div>;
+};
 
 export default App;
