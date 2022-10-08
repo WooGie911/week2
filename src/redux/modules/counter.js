@@ -1,28 +1,10 @@
 // src/modules/counter.js
 
-const PLUS_NUM = "PLUS_NUM";
-const MINUS_NUM = "MINUS_NUM";
-
-export const plusNUM = (payload) => {
-  return {
-    type: PLUS_NUM,
-    payload: payload, // payload   key와 value 가 같으면 축약가능
-  };
-};
-
-export const minusNUM = (payload) => {
-  return {
-    type: MINUS_NUM,
-    payload: payload, //payload   key와 value 가 같으면 축약가능
-  };
-};
-
 // 초기 상태값
 const initialState = {
-  number: 0,
+  todo: ["react를 배워봅시다", "javaScript를 배워봅시다"],
 };
 
-// reducer
 const counter = (state = initialState, action) => {
   console.log(action);
   switch (action.type) {
@@ -41,8 +23,51 @@ const counter = (state = initialState, action) => {
   }
 };
 
-// 모듈파일에서는 리듀서를 export default 한다.
 export default counter;
+
+// const PLUS_NUM = "PLUS_NUM";
+// const MINUS_NUM = "MINUS_NUM";
+
+// export const plusNUM = (payload) => {
+//   return {
+//     type: PLUS_NUM,
+//     payload: payload, // payload   key와 value 가 같으면 축약가능
+//   };
+// };
+
+// export const minusNUM = (payload) => {
+//   return {
+//     type: MINUS_NUM,
+//     payload: payload, //payload   key와 value 가 같으면 축약가능
+//   };
+// };
+
+// // 초기 상태값
+// const initialState = {
+//   number: 0,
+// };
+
+// // reducer
+// const counter = (state = initialState, action) => {
+//   console.log(action);
+//   switch (action.type) {
+//     case "PLUS_NUM":
+//       return {
+//         number: state.number + action.payload,
+//       };
+
+//     case "MINUS_NUM":
+//       return {
+//         number: state.number - action.payload,
+//       };
+
+//     default:
+//       return state;
+//   }
+// };
+
+// // 모듈파일에서는 리듀서를 export default 한다.
+// export default counter;
 
 // // Action Value
 // const ADD_NUMBER = "ADD_NUMBER";
