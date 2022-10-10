@@ -22,8 +22,8 @@ const App = () => {
   };
 
   const [input, setInput] = useState();
-  const todoList = useSelector((state) => state.todo);
-  // console.log(todoList);
+  const todoList = useSelector((state) => state.todo.user);
+  console.log(todoList);
 
   const onChangeHandlerInTodo = (e) => {
     const { name, value } = e.target;
@@ -71,9 +71,24 @@ const App = () => {
 
       <div className="centered">
         <div className="input">
+          <label className="input-Title">제목</label>
           <input
             type="text"
-            name="input"
+            name="inputTitle"
+            className="input"
+            onChange={onChangeHandlerInTodo}
+          ></input>
+          <label class="input-Body">내용</label>
+          <input
+            type="text"
+            name="inputBody"
+            className="input"
+            onChange={onChangeHandlerInTodo}
+          ></input>
+          <label class="input-Id">ID</label>
+          <input
+            type="text"
+            name="inputId"
             className="input"
             onChange={onChangeHandlerInTodo}
           ></input>
@@ -89,10 +104,10 @@ const App = () => {
         </div>
       </div>
 
-      {/* <div className="centered">
+      <div className="centered">
         <h1>Todo List</h1>
-        {todoList}
-      </div> */}
+        {/* {todoList[0].inputText} */}
+      </div>
       {/* <div className="list-wrapper">
         {todo.map((todo1) => {
           console.log(todo1);
