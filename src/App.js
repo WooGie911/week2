@@ -23,7 +23,7 @@ const App = () => {
 
   const [input, setInput] = useState();
   const todoList = useSelector((state) => state.todo);
-  console.log(todoList);
+  // console.log(todoList);
 
   const onChangeHandlerInTodo = (e) => {
     const { name, value } = e.target;
@@ -73,7 +73,7 @@ const App = () => {
         <div className="input">
           <input
             type="text"
-            name="input.body"
+            name="input"
             className="input"
             onChange={onChangeHandlerInTodo}
           ></input>
