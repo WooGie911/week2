@@ -21,11 +21,6 @@ const App = () => {
   // input에 값을 넣을 때마다 콘솔에 그 값이 찍히면 연결 성공!
   console.log(num);
 
-  const onClickAddNumberHandler = () => {
-    // 5. Action creator를 dispatch 해주고, 그때 Action creator의 인자에 number를 넣어줍니다.
-    dispatch(plusNUM(num));
-  };
-
   const counterStore = useSelector((state) => state); // 추가해주세요.
   console.log(counterStore); // 스토어를 조회해볼까요?
 
@@ -33,8 +28,7 @@ const App = () => {
     <div>
       {gnumber}
       <input type="number" onChange={onChangeHandler} />
-      <button onClick={onClickAddNumberHandler}>더하기</button>
-      {/* <button
+      <button
         // 이벤트 핸들러 추가
         onClick={() => {
           // 마우스를 클릭했을 때 dispatch가 실행되고, ()안에 있는 액션객체가 리듀서로 전달된다.
@@ -43,9 +37,9 @@ const App = () => {
         }}
       >
         +
-      </button> */}
+      </button>
 
-      {/* <button
+      <button
         // 이벤트 핸들러 추가
         onClick={() => {
           // 마우스를 클릭했을 때 dispatch가 실행되고, ()안에 있는 액션객체가 리듀서로 전달된다.
@@ -54,7 +48,7 @@ const App = () => {
         }}
       >
         -
-      </button> */}
+      </button>
     </div>
   );
 };
