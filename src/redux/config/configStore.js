@@ -11,5 +11,6 @@ const rootReducer = combineReducers({
   counter: counter, // <-- 새롭게 추가한 부분
 });
 const store = createStore(rootReducer);
+console.log(store);
 
 export default store;

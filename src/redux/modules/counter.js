@@ -3,6 +3,7 @@
 // 추가된 코드 👇 - 액션 value를 상수들로 만들어 줍니다. 보통 이렇게 한곳에 모여있습니다.
 const PLUS_NUM = "PLUS_NUM";
 const MINUS_NUM = "MINUS_NUM";
+const INPUT_TEXT = "INPUT_TEXT";
 
 // 추가된 코드 👇 - Action Creator를 만들어 줍니다.
 export const plusNUM = (payload) => {
@@ -19,14 +20,24 @@ export const minusNUM = (payload) => {
   };
 };
 
+export const inputText = (payload) => {
+  return {
+    type: INPUT_TEXT,
+    text: payload, //payload   key와 value 가 같으면 축약가능
+  };
+};
+
 // 초기 상태값
 const initialState = {
   number: 0,
+  // id : 0,
+  // title : "",
+  // body : ""
 };
 
 // 리듀서
 const counter = (state = initialState, action) => {
-  console.log(action);
+  // console.log(action);
   switch (action.type) {
     // PLUS_ONE이라는 case를 추가한다.
     // 여기서 말하는 case란, action.type을 의미한다.
@@ -39,9 +50,22 @@ const counter = (state = initialState, action) => {
       };
 
     case "MINUS_NUM":
+      // console.log(state);
       return {
         // state.number (기존의 nubmer)에 action.paylaod(유저가 빼길 원하는 값)을 뺸다다.
-        number: state.number - action.payload,
+        // number: state.number - action.payload,
+        ...state,
+        id: action.payload,
+        // title: action.payload,
+        // body: action.payload,
+      };
+    case "INPUT_TEXT":
+      // console.log(state);
+      return {
+        // state.number (기존의 nubmer)에 action.paylaod(유저가 빼길 원하는 값)을 뺸다다.
+        ...state,
+        inputText: action.text,
+        // state = ...state , action.payload,
       };
 
     default:
