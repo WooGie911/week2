@@ -1,4 +1,6 @@
 const INPUT_TEXT = "INPUT_TEXT";
+const USER_REVISE = "USER_REVISE";
+const DELETE_DATA = "DELETE_DATA";
 
 export const inputText = (payload) => {
   return {
@@ -6,6 +8,19 @@ export const inputText = (payload) => {
     text: payload, //payload   key와 value 가 같으면 축약가능
   };
 };
+export const userRevise = (payload) => {
+  return {
+    type: USER_REVISE,
+    ididid: payload, //payload   key와 value 가 같으면 축약가능
+  };
+};
+export const deleteData = (payload) => {
+  return {
+    type: DELETE_DATA,
+    ididid: payload, //payload   key와 value 가 같으면 축약가능
+  };
+};
+
 // 초기 상태값
 const initialState = {
   user: [],
@@ -24,16 +39,28 @@ const todo = (state = initialState, action) => {
         ...state,
       };
 
-    // //수정(뒤집어써짐)
-    //       case INPUT_TEXT:
-    //       console.log(state);
+    //수정(뒤집어써짐)
+    // case USER_REVISE:
+    //     if (array.id === action.ididid) {
+    //   const newTodo = state.user.map((value,index,array) => {
+
     //       return {
-    //         ...state,
-    //         user: action.text,
-    //         // id: action.text,
-    //         // title: action.text,
-    //         // body: action.text,
+    //         ...array,
+    //         value[index]= isDone: !todo1.isDone,
     //       };
+    //     } else {
+    //       return { ...array };
+    //     }
+    //   });
+    // return newTodo;
+
+    case DELETE_DATA:
+      state.user.map((value, index, array) => {
+        if (array.id === action.ididid) {
+          state.user.splice(index, 1);
+        }
+        return state;
+      });
 
     default:
       return state;
