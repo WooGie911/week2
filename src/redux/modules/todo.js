@@ -5,7 +5,7 @@ const DELETE_DATA = "DELETE_DATA";
 export const inputText = (payload) => {
   return {
     type: INPUT_TEXT,
-    payload, //payload   key와 value 가 같으면 축약가능
+    payload, // payload:payload,   key와 value 가 같으면 축약가능
   };
 };
 export const userRevise = (payload) => {
@@ -17,44 +17,35 @@ export const userRevise = (payload) => {
 export const deleteData = (payload) => {
   return {
     type: DELETE_DATA,
-    payload, //payload   key와 value 가 같으면 축약가능
+    payload,
   };
 };
 
 // 초기 상태값
 const initialState = {
   user: [],
-  // number: 0,
-  // id: 0,
-  // title: "",
-  // body: "",
 };
+
 const todo = (state = initialState, action) => {
   // console.log(action);
-  console.log(state);
+  // console.log(state);
   switch (action.type) {
     case INPUT_TEXT:
       state.user.push(action.payload);
-      console.log(state);
       return {
         ...state,
       };
 
-    //수정(뒤집어써짐)
-    // case USER_REVISE:
-    //     if (array.id === action.payload) {
-    //   const newTodo = state.user.map((value,index,array) => {
+    //완료 취소 기능
+    case USER_REVISE:
+      state.user.map((value, index, array) => {
+        if (value.id === action.payload) {
+          array[index].isDone = !value.isDone;
+        }
+      });
+      return state;
 
-    //       return {
-    //         ...array,
-    //         value[index]= isDone: !todo1.isDone,
-    //       };
-    //     } else {
-    //       return { ...array };
-    //     }
-    //   });
-    // return newTodo;
-
+    //삭제 기능
     case DELETE_DATA:
       const indexId = state.user.findIndex((user) => {
         if (user.id === action.payload) {
@@ -69,5 +60,5 @@ const todo = (state = initialState, action) => {
       return state;
   }
 };
-// 모듈파일에서는 리듀서를 export default 한다.
+
 export default todo;

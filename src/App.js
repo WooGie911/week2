@@ -36,7 +36,7 @@ const App = () => {
   const onChangeHandlerInTodo = (e) => {
     const { name, value } = e.target;
     setInput({ ...input, [name]: value });
-    console.log(input);
+    // console.log(input);
   };
 
   const onSubmitHandler = (e) => {
