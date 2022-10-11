@@ -5,19 +5,19 @@ const DELETE_DATA = "DELETE_DATA";
 export const inputText = (payload) => {
   return {
     type: INPUT_TEXT,
-    text: payload, //payload   key와 value 가 같으면 축약가능
+    payload, //payload   key와 value 가 같으면 축약가능
   };
 };
 export const userRevise = (payload) => {
   return {
     type: USER_REVISE,
-    ididid: payload, //payload   key와 value 가 같으면 축약가능
+    payload,
   };
 };
 export const deleteData = (payload) => {
   return {
     type: DELETE_DATA,
-    ididid: payload, //payload   key와 value 가 같으면 축약가능
+    payload, //payload   key와 value 가 같으면 축약가능
   };
 };
 
@@ -30,10 +30,11 @@ const initialState = {
   // body: "",
 };
 const todo = (state = initialState, action) => {
-  // console.log(action.text);
+  // console.log(action);
+  console.log(state);
   switch (action.type) {
     case INPUT_TEXT:
-      state.user.push(action.text);
+      state.user.push(action.payload);
       console.log(state);
       return {
         ...state,
@@ -41,7 +42,7 @@ const todo = (state = initialState, action) => {
 
     //수정(뒤집어써짐)
     // case USER_REVISE:
-    //     if (array.id === action.ididid) {
+    //     if (array.id === action.payload) {
     //   const newTodo = state.user.map((value,index,array) => {
 
     //       return {
@@ -55,12 +56,14 @@ const todo = (state = initialState, action) => {
     // return newTodo;
 
     case DELETE_DATA:
-      state.user.map((value, index, array) => {
-        if (array.id === action.ididid) {
-          state.user.splice(index, 1);
+      const indexId = state.user.findIndex((user) => {
+        if (user.id === action.payload) {
+          return true;
         }
-        return state;
+        return false;
       });
+      state.user.splice(indexId, 1);
+      return state;
 
     default:
       return state;
