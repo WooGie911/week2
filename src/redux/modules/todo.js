@@ -28,7 +28,7 @@ const initialState = {
 
 const todo = (state = initialState, action) => {
   // console.log(action);
-  // console.log(state);
+  console.log(state);
   switch (action.type) {
     case INPUT_TEXT:
       state.user.push(action.payload);
@@ -40,10 +40,10 @@ const todo = (state = initialState, action) => {
     case USER_REVISE:
       state.user.map((value, index, array) => {
         if (value.id === action.payload) {
-          array[index].isDone = !value.isDone;
+          value.isDone = !value.isDone;
         }
       });
-      return state;
+      return { ...state, user: [...state.user] };
 
     //삭제 기능
     case DELETE_DATA:
@@ -54,7 +54,7 @@ const todo = (state = initialState, action) => {
         return false;
       });
       state.user.splice(indexId, 1);
-      return state;
+      return { ...state, user: [...state.user] };
 
     default:
       return state;
